@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" class="row-bg" justify="center">
     <el-col v-for="tip in tips" :key="tip.id" :span="4">
-      <div class="step">
+      <div class="step" @click="routerGo(tip.link)">
         <i v-bind:class="tip.icon" class="icon"></i>
       </div>
       <span>{{tip.text}}</span>
@@ -11,21 +11,30 @@
 <script>
   let tips = [{
     icon: 'el-icon-edit',
-    text: '编辑'
+    link:'/login',
+    text: '登陆'
   }, {
     icon: 'el-icon-menu',
-    text: '菜单'
+    link:'/demo',
+    text: '答题'
   }, {
     icon: 'el-icon-search',
-    text: '搜索'
+    link:'/demo',
+    text: '测试'
   }, {
     icon: 'el-icon-setting',
-    text: '设置'
+    link:'/demo',
+    text: '关于'
   }, ];
   export default {
     data() {
       return {
         tips,
+      }
+    },
+    methods:{
+      routerGo(link){
+        this.$router.push(link)
       }
     }
   }
@@ -39,8 +48,14 @@
     margin-left: 50%;
     font-size: 40px;
     margin-bottom: 10px;
+    color:#706f6f;
     transform: translate(-50%, 0);
     border: 1px solid #000;
+    cursor: pointer;
+  }
+  .step:hover{
+    font-size: 45px;
+    color: #423e3e;
   }
 
   .icon {
