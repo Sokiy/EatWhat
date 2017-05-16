@@ -4,9 +4,9 @@
 <style scoped>
 footer{
     height: 40px;
-    width: 100%;
+    /*width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: 0;*/
     background: #2a2f35;
     color:#fff;
     line-height: 40px;

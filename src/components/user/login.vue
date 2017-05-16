@@ -27,9 +27,9 @@
                 <el-form-item>
                     <el-input placeholder="用户密码" type="password" v-model="form.passwd" size="large"></el-input>
                 </el-form-item>
-                <el-form-item>
+                <!--<el-form-item>
                     <el-input placeholder="确认密码" type="password" v-model="form.passwd" size="large"></el-input>
-                </el-form-item>
+                </el-form-item>-->
                 <el-form-item>
                     <el-button type="primary" @click="onRegister">立即注册</el-button>
                     <!--<el-button type="primary" @click="onCookie">测试cookie</el-button>-->
@@ -56,27 +56,24 @@ export default {
     },
     methods: {
         onRegister() {
-            self = this;
+            let self = this;
             this.axios.post('/account/register', { 'name': self.form.name, 'pwd': self.form.passwd })
                 .then(function (response) {
                     bus.$emit('login', self.form.name);
-                    console.log(self.form.name);
-                    // router.push('/demo')
-                    console.log(response.data);
+                    self.$router.push('/user/login')
                 })
                 .catch(function (error) {
                     console.log(error);
                 })
         },
         onLogin() {
-            self = this;
+            let self = this;
             this.axios.post('/account/login', { 'name': self.form.name, 'pwd': self.form.passwd })
                 .then(function (response) {
                     localStorage.setItem("role",response.data.role)
+                    localStorage.setItem("name",self.form.name)
                     bus.$emit('login');
-                    console.log(self.form.name);
-                    // router.push('/demo')
-                    console.log(response.data);
+                    self.$router.push('/user/')
                 })
                 .catch(function (error) {
                     console.log(error);

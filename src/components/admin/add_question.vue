@@ -107,7 +107,7 @@
 .clearfix {
     float: none;
     border: 1px solid #c4c4c4;
-    margin: 100px 0;
+    margin: 50px 0;
     padding: 50px 30px 20px 5px;
 }
 </style>

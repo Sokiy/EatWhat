@@ -5,6 +5,9 @@
         <router-link :to="item.link">{{item.text}}</router-link>
       </li>
     </ul>
+    <div id="tip">
+         <p>{{uname}}, 您好 <el-button type="danger" @click="loginout" v-if="!(uname == '游客')">登出</el-button><el-button type="danger" @click="login" v-if="(uname == '游客')">登录</el-button></p>
+    </div>
   </header>
 </template>
 <script>
@@ -17,9 +20,9 @@ let menu = [{
   link: '/user/demo',
   text: '测试页',
   auth:'normal',
-}, {
-  link: '/user/login',
-  text: '登陆页',
+},{
+  link: '/user/about',
+  text: '关于',
   auth:'normal',
 }, {
   link: '/admin/add',
@@ -29,22 +32,48 @@ let menu = [{
   link: '/admin/batch',
   text: '下发批次',
   auth:'admin',
+},{
+  link: '/admin/view',
+  text: '总览',
+  auth:'admin',
 }]
+
+// {
+//   link: '/user/login',
+//   text: '登陆页',
+//   auth:'normal',
+// },
 export default {
   data() {
     return {
-      menu: menu,
+      menu,
+      uname:'游客',
       role: 'normal',
     }
+  },
+  methods:{
+    loginout(){
+      let self = this;
+      localStorage.removeItem("role")
+      localStorage.removeItem("name")
+      self.uname = '游客'
+      self.$router.push('/user')
+    },
+    login(){
+      let self = this;
+      self.$router.push('/user/login')
+    },
   },
   mounted() {
     let self = this;
     if (localStorage.getItem("role") != null) {
       self.role = localStorage.getItem("role");
+      self.uname  = localStorage.getItem("name");
     }
     bus.$on('login', function () {
       if (localStorage.getItem("role") != null) {
         self.role = localStorage.getItem("role");
+        self.uname  = localStorage.getItem("name");
       }
     });
   }
@@ -60,7 +89,6 @@ header {
 
 #nav {
   height: 60px;
-  width: 500px;
   float: left;
   margin: 0;
   line-height: 60px;
@@ -70,6 +98,19 @@ header {
   float: left;
   width: 100px;
   list-style: none;
+}
+#nav .fright{
+  float: right;
+}
+#tip{
+  height: 60px;
+  line-height: 60px;
+  float: right;
+  margin-right:30px;
+}
+#tip p{
+  padding:0;
+  margin:0;
 }
 
 a {

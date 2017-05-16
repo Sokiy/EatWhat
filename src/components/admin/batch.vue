@@ -19,7 +19,6 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即创建批次</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
-        <el-button @click="getData">获取题目</el-button>
       </el-form-item>
   
     </el-form>
@@ -153,7 +152,7 @@ export default {
 .clearfix {
   float: none;
   border: 1px solid #c4c4c4;
-  margin: 100px 0;
+  margin: 10px 0;
   padding: 50px 30px 20px 5px;
 }
 
