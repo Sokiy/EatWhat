@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import bus from '../bus'
+import bus from '../../bus'
 let data1 = [{ id: 1, option: '答案1' }, { id: 2, option: '答案2' }, { id: 3, option: '答案3' }, { id: 4, option: '答案4' }]
 let data2 = [{ id: 1, option: 'q答案1' }, { id: 2, option: 'q答案2' }, { id: 3, option: 'q答案3' }, { id: 4, option: 'q答案4' }]
 export default {

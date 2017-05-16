@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../node_modules/element-ui/lib/theme-default/index.css");
+@import url("../../../../node_modules/element-ui/lib/theme-default/index.css");
 .el-carousel__item {
   display: table;
 }

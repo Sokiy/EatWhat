@@ -42,8 +42,8 @@
     </el-col>
 </template>
 <script>
-import router from '../router/index';
-import bus from '../bus'
+import router from '../../router/index';
+import bus from '../../bus'
 export default {
     data() {
         return {
@@ -72,7 +72,8 @@ export default {
             self = this;
             this.axios.post('/account/login', { 'name': self.form.name, 'pwd': self.form.passwd })
                 .then(function (response) {
-                    bus.$emit('login', self.form.name);
+                    localStorage.setItem("role",response.data.role)
+                    bus.$emit('login');
                     console.log(self.form.name);
                     // router.push('/demo')
                     console.log(response.data);

@@ -1,0 +1,18 @@
+<template>
+    <div id="admin">
+        <router-view></router-view>
+    </div>
+</template>
+
+<script>
+
+</script>
+<style scoped>
+.home {
+    padding-bottom: 50px;
+}
+
+.midTip {
+    padding-top: 30px;
+}
+</style>
